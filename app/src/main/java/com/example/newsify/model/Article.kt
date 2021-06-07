@@ -9,7 +9,7 @@ data class Article(
 
     @PrimaryKey(autoGenerate = true)
     val id: Int? = null,
-    val author: String,
+    val author: String? = null,
     val content: String,
     val description: String,
     val publishedAt: String,

@@ -70,6 +70,9 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
         paginationProgressBar.visibility = View.VISIBLE
     }
 
+
+    
+
     private fun setUpRecyclerView() {
         newsAdapter = NewsAdapter()
         rv_breaking_news.apply {
