@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.findNavController()
 
         val newsRepository = NewsRepository(ArticleDatabase(this))
-        val viewModelProviderFactory = NewsViewModelProviderFactory(newsRepository)
+        val viewModelProviderFactory = NewsViewModelProviderFactory(application, newsRepository)
 
         newsViewModel =
             ViewModelProvider(this, viewModelProviderFactory).get(NewsViewModel::class.java)

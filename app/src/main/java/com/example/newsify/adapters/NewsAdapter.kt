@@ -39,7 +39,7 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.MyViewHolder>() {
         val article = differ.currentList[position]
 
         holder.itemView.apply {
-            tv_newsSource.text = article.source.name
+            tv_newsSource.text = article.source?.name
             tv_newsDescription.text = article.description
             tv_newsPublishedAt.text = "Published At - ${article.publishedAt}"
             tv_newsTitle.text = article.title
