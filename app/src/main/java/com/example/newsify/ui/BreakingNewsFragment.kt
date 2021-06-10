@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearSnapHelper
+import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newsify.R
 import com.example.newsify.adapters.NewsAdapter
@@ -38,6 +40,13 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
                 bundle
             )
         }
+
+        breaking_fab_goToTop.setOnClickListener {
+            rv_breaking_news.smoothScrollToPosition(0)
+        }
+
+        val snapHelper = PagerSnapHelper()
+        snapHelper.attachToRecyclerView(rv_breaking_news)
 
 
 
@@ -99,6 +108,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
 
         override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
             super.onScrolled(recyclerView, dx, dy)
+
 
             val layoutManager = recyclerView.layoutManager as LinearLayoutManager
             val firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition()

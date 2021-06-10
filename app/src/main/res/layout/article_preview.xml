@@ -2,23 +2,24 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="16dp"
-    android:layout_marginTop="16dp"
-    android:layout_marginEnd="16dp"
-    app:cardBackgroundColor="@color/white"
-    app:cardCornerRadius="12dp"
-    >
+    android:layout_height="match_parent"
+    android:layout_marginStart="12dp"
+    android:layout_marginTop="30dp"
+    android:layout_marginEnd="12dp"
+    android:layout_marginBottom="30dp"
+    android:elevation="0dp"
+    app:cardCornerRadius="12dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:background="#ffffff">
 
 
         <ImageView
             android:id="@+id/iv_newsImage"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="225dp"
             android:layout_centerHorizontal="true"
             android:scaleType="fitXY"
             android:src="@drawable/ic_launcher_background" />
@@ -36,6 +37,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="6dp"
             android:layout_marginEnd="16dp"
+            android:layout_marginBottom="12dp"
             android:fontFamily="sans-serif-medium"
             android:text="News Title"
             android:textColor="@color/black"
@@ -49,7 +51,9 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="6dp"
             android:layout_marginEnd="16dp"
+            android:ellipsize="end"
             android:fontFamily="sans-serif-medium"
+            android:maxLines="2"
             android:text="This is the description of the news which u are reading now"
             android:textColor="#292929"
             android:textSize="14sp" />

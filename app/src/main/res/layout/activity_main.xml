@@ -11,11 +11,11 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="#292929"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:theme="@style/ToolbarTheme"
-        app:titleTextColor="@color/black" />
+        app:titleTextColor="@color/white" />
 
 
     <androidx.fragment.app.FragmentContainerView
@@ -34,9 +34,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/white"
+        android:background="#000000"
         app:itemIconSize="24sp"
         app:itemRippleColor="@android:color/transparent"
+        app:itemTextColor="@drawable/nav_bar_text_selector"
         app:labelVisibilityMode="unlabeled"
         app:menu="@menu/bottom_nav_items" />
 

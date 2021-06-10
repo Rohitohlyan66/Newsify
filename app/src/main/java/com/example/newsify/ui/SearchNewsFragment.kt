@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newsify.R
 import com.example.newsify.adapters.NewsAdapter
@@ -17,7 +18,9 @@ import com.example.newsify.util.Constants
 import com.example.newsify.util.Constants.Companion.SEARCH_NEWS_TIME_DELAY
 import com.example.newsify.util.Resource
 import com.example.newsify.viewmodel.NewsViewModel
+import kotlinx.android.synthetic.main.fragment_saved_news.*
 import kotlinx.android.synthetic.main.fragment_search_news.*
+import kotlinx.android.synthetic.main.fragment_search_news.paginationProgressBar
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
@@ -49,6 +52,14 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
             )
         }
 
+        search_fab_goToTop.setOnClickListener {
+            rv_search_news.smoothScrollToPosition(0)
+        }
+
+        val snapHelper = PagerSnapHelper()
+        snapHelper.attachToRecyclerView(rv_search_news)
+
+
         var job: Job? = null
 
         et_search_news.addTextChangedListener { editable ->
@@ -57,11 +68,13 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
                 delay(SEARCH_NEWS_TIME_DELAY)
                 editable?.let {
                     if (editable.toString().isNotEmpty()) {
+                        newsViewModel.searchNewsResponse = null
                         newsViewModel.getSearchNews(editable.toString())
                     }
                 }
             }
         }
+
 
 
         newsViewModel.searchNews.observe(viewLifecycleOwner, Observer { response ->
@@ -70,7 +83,6 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
                     hideProgressBar()
                     response.data?.let { newsResponse ->
                         newsAdapter.differ.submitList(newsResponse.articles.toList())
-
                         val totalPages = newsResponse.totalResults / Constants.QUERY_PAGE_SIZE + 2
                         isLastPage = newsViewModel.searchNewsPage == totalPages
                     }

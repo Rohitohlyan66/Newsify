@@ -43,7 +43,8 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.MyViewHolder>() {
             tv_newsDescription.text = article.description
             tv_newsPublishedAt.text = "Published At - ${article.publishedAt}"
             tv_newsTitle.text = article.title
-            Glide.with(this).load(article.urlToImage).into(iv_newsImage)
+            Glide.with(this).load(article.urlToImage).placeholder(R.drawable.placeholder)
+                .into(iv_newsImage)
 
             setOnClickListener {
                 onItemClickListener?.let {
@@ -58,6 +59,7 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.MyViewHolder>() {
     override fun getItemCount(): Int {
         return differ.currentList.count()
     }
+
 
     private var onItemClickListener: ((Article) -> Unit)? = null
 

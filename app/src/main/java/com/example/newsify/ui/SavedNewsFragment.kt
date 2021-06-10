@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newsify.R
 import com.example.newsify.adapters.NewsAdapter
@@ -37,6 +38,12 @@ class SavedNewsFragment : Fragment(R.layout.fragment_saved_news) {
             )
         }
 
+        saved_fab_goToTop.setOnClickListener {
+            rv_saved_news.smoothScrollToPosition(0)
+        }
+
+        val snapHelper = PagerSnapHelper()
+        snapHelper.attachToRecyclerView(rv_saved_news)
 
         val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(
             ItemTouchHelper.UP or ItemTouchHelper.DOWN,
